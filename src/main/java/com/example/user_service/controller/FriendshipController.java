@@ -33,7 +33,7 @@ public class FriendshipController {
     }
 
     @GetMapping("/user/{email}")
-    publict ResponseEntity<List<User>> getUserFriends(@PathVariable string email) {
+    public ResponseEntity<List<User>> getUserFriends(@PathVariable String email) {
         return ResponseEntity.ok(friendshipService.getFriendList(email));
     }
 }

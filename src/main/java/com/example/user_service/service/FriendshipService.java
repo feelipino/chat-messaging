@@ -79,7 +79,7 @@ public class FriendshipService {
     }
 
     @Transactional
-    public Friendship acceptFriendRequest(Long friendShipId) {
+    public Friendship acceptFriendRequest(Long friendshipId) {
         Optional<Friendship> friendshipOpt = friendshipRepository.findById(friendshipId);
         if (friendshipOpt.isEmpty()) {
             throw new IllegalArgumentException("Friendship not found");
@@ -134,7 +134,7 @@ public class FriendshipService {
         return friendshipRepository.save(friendship);
     }
 
-    public List<User> getFriendsList(String userEmail) {
+    public List<User> getFriendList(String userEmail) {
         // Search for all accepted friendships where the user is the sender or the recipient
         List<Friendship> sentFriendships = friendshipRepository.findBySenderEmailAndStatus(userEmail, "ACCEPTED");
         List<Friendship> receivedFriendships = friendshipRepository.findByReceiverEmailAndStatus(userEmail, "ACCEPTED");

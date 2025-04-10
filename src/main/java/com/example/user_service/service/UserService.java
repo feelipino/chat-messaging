@@ -39,6 +39,10 @@ public class UserService {
         return savedUser;
     }
 
+    public Optional<User> findByEmail(String email) {
+        return relationalUserRepository.findByEmail(email);
+    }
+
     @Transactional
     public void deleteUser(String email) {
         //Delete from relational database
