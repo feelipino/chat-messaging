@@ -2,6 +2,8 @@ package com.example.user_service.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Friendship {
 
@@ -18,15 +20,18 @@ public class Friendship {
     @Column(nullable = false)
     private String status; //PENDING, ACCEPTED, REJECTED
 
+    private LocalDateTime createdAt;
+
     public Friendship() {
+        this.createdAt = LocalDateTime.now();
     }
 
     // Getters and Setters
-    public long GetId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,6 +41,10 @@ public class Friendship {
 
     public void setSenderEmail(String senderEmail) {
         this.senderEmail = senderEmail;
+    }
+
+    public String getReceiverEmail() {
+        return receiverEmail;
     }
 
     public void setReceiverEmail(String receiverEmail) {
@@ -48,5 +57,13 @@ public class Friendship {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
